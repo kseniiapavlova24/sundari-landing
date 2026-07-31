@@ -1,4 +1,4 @@
-# Sundari — Yoga & Theta Healing Landing Page
+# Kseniia Pavlova — Yoga & Theta Healing Landing Page
 
 A single-page site for yoga and theta healing sessions, built as a static HTML/CSS/JS page (no build step, no dependencies).
 
@@ -22,6 +22,5 @@ Then visit http://localhost:8000
 4. Deploy — Netlify will auto-redeploy on every push to `main`.
 
 ## To customize
-- Swap "Sundari" and "[Your Name]" for your real name/brand throughout `index.html`.
-- Replace the placeholder portrait shape with a real `<img>` once you have photos.
-- Add your scheduling tool link to the "Book a session" buttons once you have one.
+- Portrait photo and monk medallion image live in `images/` — swap them out any time.
+- Add a scheduling tool link to the "Book a session" flow once you have one.
