@@ -292,6 +292,32 @@
     color:var(--ink-soft);
   }
 
+  .credentials{
+    display:grid;
+    gap:16px;
+    margin-top:32px;
+  }
+  .credential-item{
+    padding:22px 24px;
+    background:var(--linen-soft);
+    border-radius:20px 20px 42px 20px;
+    border:1px solid rgba(62,74,52,0.09);
+  }
+  .credential-item .label{display:block;margin-bottom:8px;}
+  .credential-title{
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    font-weight:500;
+    color:var(--ink);
+    margin-bottom:6px;
+    line-height:1.35;
+  }
+  .credential-detail{
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    line-height:1.55;
+  }
+
   /* ---------- PRACTICES / OFFERINGS ---------- */
   .practices{background:var(--linen-soft);}
   .practice-grid{
@@ -651,10 +677,17 @@
       <h2 style="margin:14px 0 20px;font-size:2.1rem;">Hi, I'm [Your Name].</h2>
       <p class="reveal">I've spent the last several years studying traditional hatha yoga and theta healing, and I teach both the same way — slowly, honestly, and without pretense.</p>
       <p class="reveal">My sessions blend breath-centered movement with the deep relaxation of theta work, so you leave not just stretched, but genuinely settled. No two sessions look the same, because no two people are.</p>
-      <div class="about-tags reveal">
-        <span>500+ hr certified</span>
-        <span>Theta Healing® practitioner</span>
-        <span>Trauma-informed</span>
+      <div class="credentials reveal">
+        <div class="credential-item">
+          <span class="label">Yoga</span>
+          <p class="credential-title">900-Hour Advanced Yoga Teacher Training Course</p>
+          <p class="credential-detail">The Yoga Institute, Santacruz, Mumbai — plus an additional 900 hours as Program Coordinator, mentoring 30 aspiring yoga teachers.</p>
+        </div>
+        <div class="credential-item">
+          <span class="label">Theta Healing</span>
+          <p class="credential-title">Certified Practitioner — Basic DNA, Advanced DNA & Dig Deeper</p>
+          <p class="credential-detail">The three foundational ThetaHealing® seminars, completed through THInK-certified instruction.</p>
+        </div>
       </div>
     </div>
   </div>
