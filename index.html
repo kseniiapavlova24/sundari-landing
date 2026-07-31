@@ -89,12 +89,12 @@
     color:var(--sage-deep);
   }
   .lotus-divider{
-    width:34px;
-    height:34px;
+    width:74px;
+    height:74px;
     color:var(--sage-deep);
-    opacity:0.55;
+    opacity:0.9;
     display:block;
-    margin:0 auto 22px;
+    margin:0 auto 26px;
   }
   .nav-links{display:flex;gap:36px;align-items:center;}
   .nav-links a{
@@ -613,22 +613,30 @@
 <body>
 
 <svg style="display:none" aria-hidden="true">
-  <symbol id="lotus" viewBox="0 0 100 100">
-    <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M50,80 C42,68 41,52 50,26 C59,52 58,68 50,80 Z"/>
-      <path d="M50,80 C42,68 41,52 50,26 C59,52 58,68 50,80 Z" transform="rotate(28 50 80)"/>
-      <path d="M50,80 C42,68 41,52 50,26 C59,52 58,68 50,80 Z" transform="rotate(-28 50 80)"/>
-      <path d="M50,80 C44,70 43,58 50,38 C57,58 56,70 50,80 Z" transform="rotate(52 50 80)"/>
-      <path d="M50,80 C44,70 43,58 50,38 C57,58 56,70 50,80 Z" transform="rotate(-52 50 80)"/>
-      <line x1="26" y1="80" x2="74" y2="80"/>
-    </g>
+  <symbol id="spirit-mark" viewBox="0 0 100 100">
+    <!-- ears -->
+    <circle cx="27" cy="40" r="7" fill="currentColor"/>
+    <circle cx="73" cy="40" r="7" fill="currentColor"/>
+    <!-- robe / seated body -->
+    <path d="M20,58 C20,46 34,52 50,52 C66,52 80,46 80,58 L83,90 C83,97 72,100 50,100 C28,100 17,97 17,90 Z" fill="currentColor"/>
+    <!-- head -->
+    <circle cx="50" cy="33" r="22" fill="currentColor"/>
+    <!-- closed eyes -->
+    <path d="M39,32 q4,4 8,0" fill="none" stroke="var(--linen-soft)" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M53,32 q4,4 8,0" fill="none" stroke="var(--linen-soft)" stroke-width="2.4" stroke-linecap="round"/>
+    <!-- praying hands -->
+    <path d="M50,58 C46,58 44,64 44,70 C44,76 47,81 50,84 C53,81 56,76 56,70 C56,64 54,58 50,58 Z" fill="var(--linen-soft)"/>
+    <!-- prayer beads -->
+    <circle cx="76" cy="72" r="3.4" fill="var(--linen-soft)"/>
+    <circle cx="78" cy="80" r="3" fill="var(--linen-soft)"/>
+    <circle cx="79" cy="88" r="2.6" fill="var(--linen-soft)"/>
   </symbol>
 </svg>
 
 <nav>
   <div class="wrap">
     <a href="#top" class="logo">
-      <svg class="lotus-mark"><use href="#lotus"></use></svg>
+      <svg class="lotus-mark"><use href="#spirit-mark"></use></svg>
       Sun<span>dari</span>
     </a>
     <div class="nav-links">
@@ -668,13 +676,13 @@
 
 <section class="section" id="about">
   <div class="wrap">
-    <svg class="lotus-divider reveal"><use href="#lotus"></use></svg>
+    <svg class="lotus-divider reveal"><use href="#spirit-mark"></use></svg>
   </div>
   <div class="wrap about-grid">
     <div class="about-portrait reveal"><span>your photo here</span></div>
     <div class="about-text">
       <span class="label">About</span>
-      <h2 style="margin:14px 0 20px;font-size:2.1rem;">Hi, I'm [Your Name].</h2>
+      <h2 style="margin:14px 0 20px;font-size:2.1rem;">Hi, I'm Kseniia Pavlova.</h2>
       <p class="reveal">I've spent the last several years studying traditional hatha yoga and theta healing, and I teach both the same way — slowly, honestly, and without pretense.</p>
       <p class="reveal">My sessions blend breath-centered movement with the deep relaxation of theta work, so you leave not just stretched, but genuinely settled. No two sessions look the same, because no two people are.</p>
       <div class="credentials reveal">
@@ -822,7 +830,7 @@
     <div class="footer-top">
       <div>
         <a href="#top" class="logo">
-          <svg class="lotus-mark"><use href="#lotus"></use></svg>
+          <svg class="lotus-mark"><use href="#spirit-mark"></use></svg>
           Sun<span>dari</span>
         </a>
         <p style="margin-top:14px;max-width:280px;font-size:0.9rem;">Yoga & theta healing sessions, held with care.</p>
