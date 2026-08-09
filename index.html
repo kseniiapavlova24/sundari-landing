@@ -450,7 +450,9 @@
     font-style:italic;
     line-height:1.5;
     max-width:700px;
+    min-height:5.5em;
     position:relative;
+    transition:opacity 0.35s ease;
   }
   .testimonial .who{
     margin-top:26px;
@@ -458,6 +460,27 @@
     font-size:0.8rem;
     color:rgba(255,255,255,0.75);
     letter-spacing:0.04em;
+    transition:opacity 0.35s ease;
+  }
+  .testimonial-dots{
+    display:flex;
+    gap:9px;
+    margin-top:34px;
+    position:relative;
+  }
+  .testimonial-dots button{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    background:rgba(255,255,255,0.3);
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .testimonial-dots button.active{
+    background:rgba(255,255,255,0.9);
+    transform:scale(1.15);
   }
 
   /* ---------- CTA ---------- */
@@ -792,8 +815,9 @@
 <section class="section">
   <div class="wrap">
     <div class="testimonial reveal">
-      <p data-i18n="testimonialQuote">I came in tense and skeptical about the "theta" part. I left calmer than I've felt in years — and I actually understood what had shifted, not just that something had.</p>
-      <div class="who" data-i18n="testimonialWho">— A recent client</div>
+      <p id="testimonialQuote">I came in tense and skeptical about the "theta" part. I left calmer than I've felt in years — and I actually understood what had shifted, not just that something had.</p>
+      <div class="who" id="testimonialWho">— A recent client</div>
+      <div class="testimonial-dots" id="testimonialDots" role="tablist" aria-label="Reviews"></div>
     </div>
   </div>
 </section>
@@ -971,8 +995,6 @@
       step2Desc: "Held in person or over video, at a pace that follows your breath rather than the clock.",
       step3Title: "A practice that evolves with you",
       step3Desc: "We revisit and adjust together — most people settle into a rhythm of weekly or biweekly sessions.",
-      testimonialQuote: 'I came in tense and skeptical about the "theta" part. I left calmer than I\'ve felt in years — and I actually understood what had shifted, not just that something had.',
-      testimonialWho: "— A recent client",
       ctaLabel: "Ready when you are",
       ctaHeading: "Let's find the session that fits where you are right now.",
       ctaSub: "No pressure, no packages to decide on upfront — just a conversation to start.",
@@ -1042,8 +1064,6 @@
       step2Desc: "Проходит очно или по видеосвязи, в темпе, который следует за вашим дыханием, а не за часами.",
       step3Title: "Практика, которая развивается вместе с вами",
       step3Desc: "Мы вместе пересматриваем и корректируем практику — большинство находит свой ритм в еженедельных или двухнедельных сессиях.",
-      testimonialQuote: "Я пришла напряжённой и скептически настроенной насчёт «тета»-части. Ушла спокойнее, чем чувствовала себя годами — и по-настоящему поняла, что именно изменилось, а не просто, что что-то изменилось.",
-      testimonialWho: "— Недавняя клиентка",
       ctaLabel: "Когда вы будете готовы",
       ctaHeading: "Давайте найдём сессию, которая подходит именно вам сейчас.",
       ctaSub: "Без давления и пакетов, которые нужно выбирать заранее — просто разговор для начала.",
@@ -1071,7 +1091,117 @@
     }
   };
 
+  // ---------- testimonials carousel ----------
+  const testimonialsData = {
+    en: [
+      {
+        quote: "I loved the atmosphere — everything was calm, gentle, and completely free of pressure. You explain things so clearly, and you create a real sense that it's okay to just relax and be in the process. Afterwards I felt this inner exhale, like everything inside had gone quieter.",
+        who: "— Verified client"
+      },
+      {
+        quote: "I really loved practicing yoga with you. At first my body and mind couldn't quite agree, but with your gentle guidance it all came together. The calm and quiet you created made my morning — and the mantras you sang were unexpected, and really powerful.",
+        who: "— Артур"
+      },
+      {
+        quote: "I've never been able to relax through hypnosis, no matter how many times I tried. But in your sessions my body just melts into stillness — and afterwards, such lightness and energy!",
+        who: "— Verified client"
+      },
+      {
+        quote: "During the healing sessions I feel strong vibrations through my whole body — it's incredible! Thank you!",
+        who: "— Verified client"
+      },
+      {
+        quote: "After practicing with you I had so much energy the whole day, and such clarity about what to do — I got through a pile of things I'd been putting off for ages.",
+        who: "— Verified client"
+      },
+      {
+        quote: "After the session everything felt so good — I loved it. Such relief in my body. It had been a hard day, and it helped me settle down and pull myself back together, body and mind.",
+        who: "— Verified client"
+      }
+    ],
+    ru: [
+      {
+        quote: "Мне очень понравилась атмосфера — всё было спокойно, мягко и без давления. С тобой очень комфортно, ты понятно объясняешь и создаёшь ощущение, что можно просто расслабиться и побыть в процессе. После сессии осталось ощущение внутреннего выдоха, как будто стало тише внутри.",
+        who: "— Проверенный отзыв"
+      },
+      {
+        quote: "Мне очень понравилась йога с тобой. Вначале тело и мозг не могли договориться, но благодаря твоему мягкому сопровождению всё получилось. Атмосфера спокойствия, которую ты создала, сделала моё утро — а мантры, которые ты напевала, это было неожиданно и очень сильно.",
+        who: "— Артур"
+      },
+      {
+        quote: "Я вообще не поддаюсь гипнозу, сколько ни пробовала — не получается расслабиться. Но под ваши сеансы тело проваливается в негу, и такая лёгкость, энергия после!",
+        who: "— Проверенный отзыв"
+      },
+      {
+        quote: "Во время сеансов исцеления я чувствую сильные вибрации по всему телу — это невероятно! Благодарю!",
+        who: "— Проверенный отзыв"
+      },
+      {
+        quote: "После практики с тобой у меня целый день было много энергии и такая ясность, что делать и как — я сделала кучу дел, которые долго откладывала.",
+        who: "— Проверенный отзыв"
+      },
+      {
+        quote: "После сессии всё было хорошо, очень понравилось. В теле такое облегчение — как раз выдался тяжёлый день, и это помогло успокоиться и собрать тело и мысли в кучку.",
+        who: "— Проверенный отзыв"
+      }
+    ]
+  };
+
+  let currentLang = 'en';
+  let testimonialIndex = 0;
+  let testimonialTimer = null;
+  const testimonialQuoteEl = document.getElementById('testimonialQuote');
+  const testimonialWhoEl = document.getElementById('testimonialWho');
+  const testimonialDotsEl = document.getElementById('testimonialDots');
+
+  function renderTestimonial() {
+    const list = testimonialsData[currentLang] || testimonialsData.en;
+    const item = list[testimonialIndex];
+    if (!item || !testimonialQuoteEl) return;
+    testimonialQuoteEl.style.opacity = '0';
+    testimonialWhoEl.style.opacity = '0';
+    setTimeout(() => {
+      testimonialQuoteEl.textContent = item.quote;
+      testimonialWhoEl.textContent = item.who;
+      testimonialQuoteEl.style.opacity = '1';
+      testimonialWhoEl.style.opacity = '1';
+    }, 200);
+    if (testimonialDotsEl) {
+      testimonialDotsEl.querySelectorAll('button').forEach((btn, i) => {
+        btn.classList.toggle('active', i === testimonialIndex);
+      });
+    }
+  }
+
+  function goToTestimonial(i) {
+    testimonialIndex = i;
+    renderTestimonial();
+    restartTestimonialAutoplay();
+  }
+
+  function restartTestimonialAutoplay() {
+    if (testimonialTimer) clearInterval(testimonialTimer);
+    testimonialTimer = setInterval(() => {
+      const list = testimonialsData[currentLang] || testimonialsData.en;
+      testimonialIndex = (testimonialIndex + 1) % list.length;
+      renderTestimonial();
+    }, 7000);
+  }
+
+  if (testimonialDotsEl) {
+    testimonialsData.en.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Show review ' + (i + 1));
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToTestimonial(i));
+      testimonialDotsEl.appendChild(dot);
+    });
+    restartTestimonialAutoplay();
+  }
+
   function applyLanguage(lang) {
+    currentLang = lang;
     const dict = translations[lang] || translations.en;
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
@@ -1082,6 +1212,7 @@
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
+    renderTestimonial();
     try { localStorage.setItem('site-lang', lang); } catch (e) {}
   }
 
